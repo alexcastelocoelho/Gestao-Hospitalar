@@ -49,6 +49,17 @@ public class GlobalExceptionHandler {
                 ZonedDateTime.now());
     }
 
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(CpfConflictException.class)
+    public ApiErrorResponse cpfConflitException(CpfConflictException exception, HttpServletRequest request, HandlerMethod method){
+        return new ApiErrorResponse(HttpStatus.CONFLICT, exception.getMessage(),
+                request.getRequestURI(),
+                method.getMethod().getName(),
+                ZonedDateTime.now());
+    }
+
+
+
 
 
 }
