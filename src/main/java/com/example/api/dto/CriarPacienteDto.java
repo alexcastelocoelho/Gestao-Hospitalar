@@ -1,5 +1,6 @@
 package com.example.api.dto;
 
+import com.example.api.utils.cpf.CpfValido;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
@@ -18,6 +19,7 @@ public record CriarPacienteDto(
         Integer idade,
 
         @NotBlank(message = "Informe o seu CPF, por favor")
+        @CpfValido
         String cpf,
 
         @NotNull(message = "Informe sua data de nascimento, por favor")

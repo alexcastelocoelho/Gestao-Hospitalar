@@ -1,6 +1,8 @@
 package com.example.api.model;
 
+import com.example.api.utils.cpf.CpfSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -21,6 +23,7 @@ public class PacienteModel {
     private Integer idade;
 
     @Column(nullable = false, unique = true, length = 11)
+    @JsonSerialize(using = CpfSerializer.class)
     private String cpf;
 
     @Column(nullable = false)
